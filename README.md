@@ -1,5 +1,4 @@
 # RA-OA
-The raw data for analysis is in the Data folder
 
 The python version used is 3.7.6, and the R version is 3.6.1
 
