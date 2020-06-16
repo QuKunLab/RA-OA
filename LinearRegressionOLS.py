@@ -10,30 +10,9 @@ import os
 import statsmodels.api as sm
 import sys
 import scipy.stats
-import matplotlib as mpl
-from matplotlib import rc
-from sklearn.decomposition import PCA
-from mpl_toolkits.mplot3d import Axes3D
-#from compiler.ast import flatten
-from sklearn.neighbors import NearestNeighbors
-from itertools import groupby
 import math
-import networkx as nx
-import gc
-import psutil
 import scipy.stats
 from scipy.stats.mstats import gmean
-from scipy.cluster.hierarchy import linkage
-from sklearn.manifold import TSNE
-from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
-from sklearn.neighbors import kneighbors_graph
-from sklearn import cluster
-from scipy.spatial.distance import pdist
-from scipy.stats import pearsonr
-#import community
-import matplotlib.gridspec as gridspec
-import random
 import matplotlib as mpl
 mpl.rcParams['pdf.fonttype'] = 42
 mpl.rcParams["font.sans-serif"] = "Arial"
@@ -41,41 +20,10 @@ from pylab import savefig
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
-
 from sklearn.linear_model import LinearRegression
 
 
-# In[5]:
-
-
-#Define f(x)
-def ReadTable(Infile):return pd.read_csv(Infile,sep='\t',index_col=0)
-def ReadTableBed(Infile):return pd.read_table(Infile,sep='\t',header=None)
-
-def Mkdir(DirX):
-    if not os.path.exists(DirX):
-        os.mkdir(DirX)
-
-def meanCenter(L):
-    m=np.mean(L)
-    return [i-m for i in L]
-
-def log10(L):return -math.log(L,10)
-
-
-#计算FDR
-def p_adjust_bh(p):
-    p = np.asfarray(p)
-    by_descend = p.argsort()[::-1]
-    by_orig = by_descend.argsort()
-    steps = float(len(p)) / np.arange(len(p), 0, -1)
-    q = np.minimum(1, np.minimum.accumulate(steps * p[by_descend]))
-    return q[by_orig]
-
-
-# In[20]:
-
-
+###OLS
 ClusterN='3'
 dataF='clinical_v1.txt'
 Data=pd.read_csv(dataF,sep='\t',index_col=0)
@@ -117,18 +65,13 @@ for i in Y:
 
 
 
-# # CRP related Peaks:
-
-# In[121]:
-
-
+###CRP related Peaks:
 ###step1:
 F=Dir+'KmeansCluster_c3.txt'
-DF=ReadTable(F)
+DF=pd.read_csv(F,sep='\t',index_col=0)
 
 ClinalF=Dir+'KmeansCluster_c3.SumScore.AllPeak.clinicalM.txt'
-
-ClinalDF=ReadTable(ClinalF)
+ClinalDF=pd.read_csv(ClinalF,sep='\t',index_col=0)
 ClinalDF
 
 RADF=DF[list(ClinalDF.index)]
@@ -155,18 +98,12 @@ DF_P['Pvalue']=DF_P.apply(Pearson_P,axis=1)
 DF_P.to_csv(Dir+'RA_Pvalue.txt',sep='\t')
 
 
-
-
-# In[136]:
-
-
 ###step2: plot
 PlotF=Dir+'RApateint_OLS.txt'
 Data=ReadTable(PlotF)
 Data_SortRank = Data.sort_values(by=['Rsquare'],ascending=True)
 Data_SortRank.head()
 
-# Fig2: Rank_vs_Score
 sns.set_style('ticks')
 fig=plt.figure(figsize=(1,3))
 plt.scatter(Data_SortRank['Rsquare'],Data_SortRank['logP'], s=1,marker='o',linestyle='-',c=Data_SortRank['Rsquare'],cmap='viridis_r', alpha=1)
