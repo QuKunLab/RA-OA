@@ -21,3 +21,7 @@ RNA-seq:
 7. RNA_PreProcess_Disease_ImmuneCells.ipynb: RNA-seq Significant difference peak analysis
 
 8. GSEAanalysis.R: To calculate the enrichment score and p of the gene set downloaded from MSigDB in the gene matrix. The values of p less than 0.05 are considered to be significantly enriched. 
+
+DATA:
+
+The “DATA” folder contains the raw counts matrix and peaks bed file required for 'ATAC_PreProcess_Disease_ImmuneCells.ipynb', 'DEseq.r' and 'RNA_PreProcess_Disease_ImmuneCells.ipynb'.
