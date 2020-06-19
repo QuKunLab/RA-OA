@@ -10,7 +10,7 @@ ATAC-seq:
 
 3. KmeansCluster.py: Unsupervised clustering of differential peaks 
 
-4. LinearRegressionOLS.py: We used ordinary least squares (OLS) using statsmodels in Python to performed linear regression as an approach to measure the correlation of RAAS with the clinical data of RA patients including DAS28-CRP, DAS28-ESR, CRP, ESR, TCJ, SCJ, RF, and ACPA. 
+4. LinearRegressionOLS.py: We used ordinary least squares (OLS) using statsmodels in Python to performed linear regression as an approach to measure the correlation of RAAS with the clinical data of RA patients including DAS28-CRP, DAS28-ESR, CRP, ESR, TCJ, SCJ, RF, and Anti-CCP. 
 
 5. PairwiseSigPeakFilter.py: Differential analysis. For ATAC-seq, each cell type was compared with all other cell types, and cell type-specific peaks were filtered with abs(log2 fold change) > 4, p < 0.001, and FDR < 0.01. 
 
