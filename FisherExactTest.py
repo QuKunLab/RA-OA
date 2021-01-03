@@ -12,10 +12,6 @@ import os
 import sys
 import scipy.stats
 
-###a表示目标Genelist且在该term的数目
-###b是该term基因数目减去a
-###c是目标Genelist减去a
-###d是背景的基因数目减去b
 
 #a=len(ret)
 #b=len(tf)-len(ret)
