@@ -25,9 +25,6 @@ import scipy.stats
 
 # In[15]:
 
-
-C3与OC分化term
-#c是Peak GREAT对应的基因
 a=40
 b=95-a
 c=3201-a
@@ -46,8 +43,6 @@ print ('hyper', hyper)
 # In[6]:
 
 
-#C3与调节OC分化term
-#c是Peak GREAT对应的基因
 a=25
 b=63-a
 c=3201-a
@@ -66,7 +61,6 @@ print ('hyper', hyper)
 # In[11]:
 
 
-#C3与促炎term
 a=44
 b=148-a
 c=3201-a
