@@ -14,6 +14,8 @@ ATAC-seq:
 
 5. PairwiseSigPeakFilter.py: Differential analysis. For ATAC-seq, each cell type was compared with all other cell types, and cell type-specific peaks were filtered with abs(log2 fold change) > 4, p < 0.001, and FDR < 0.01. 
 
+6. Samples_PCA.ipynb: Principal component analysis(PCA) analysis.
+
 RNA-seq:
 
 6. DEseq.r: RNA-seq normalization
